@@ -1,7 +1,4 @@
-const express = require('express'); //chama a biblioteca instalada
-require('dotenv').config();
-
-const app = express(); //faz uso da biblioteca instalada em uma constante pra ficar mais facil de chamar o express
+const app = require('./config/express-config');
 /*global process*/
 const port = process.env.PORT; //caminho para acessar a variavel
 //api tem que rodar em uma porta para que o front possa acessar essa porta
