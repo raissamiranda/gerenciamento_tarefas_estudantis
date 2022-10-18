@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const database = require('../database/index');
 
-const User = require('./Usuario');
+const User = require('./User');
 // const UserProject = require('./UserProject');
 
 const Tarefa = database.define('Tarefa', {
