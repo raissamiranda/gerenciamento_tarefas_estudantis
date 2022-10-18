@@ -1,6 +1,6 @@
 # Gerenciamento de Tarefas Estudantis
 Projeto para a disciplina de engenharia de software da UFMG 
-Esse sistema tem a proposta de criar um site onde seja possível a inserção de atividades escolares e universitáriaqs para a melhor organização destas. 
+Esse sistema tem a proposta de criar um site onde seja possível a inserção de atividades escolares e universitárias para a melhor organização destas. 
 
 # Principais Features
 1. Cadastro/Login
