@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const database = require('../database/index');
  
-const Usuario = database.define('usuario', {
+const User = database.define('usuario', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -25,21 +25,20 @@ const Usuario = database.define('usuario', {
         allowNull: false,
     },
     
-    dateOfBirth: {
-        type: Sequelize.DATE,
-        allowNull: false
-    },
-    
-    phone: {
+    interesses: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
     },
-    
-    role: {
-        type: Sequelize.ENUM,
-        values: ['user'],
-        allowNull: false,
-    }
+
+    periodo: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+    },
+
+    materias: {
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
 })
  
-module.exports = Usuario;
+module.exports = User;
