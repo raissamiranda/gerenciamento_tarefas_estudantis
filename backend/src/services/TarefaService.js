@@ -63,6 +63,18 @@ class tarefaService {
   
       return tarefa;
     }
+
+    async getTarefaMateria(materia) {
+      const tarefa = await Tarefa.findAll({
+        where: { materia: materia },
+      });
+
+      if (!tarefa) {
+        throw new QueryError(`Nao foi encontrado um projeto com o nome: ${name}`);
+      }
+
+      return tarefa;
+    }
 }
 
 module.exports = new tarefaService;

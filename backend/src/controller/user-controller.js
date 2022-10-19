@@ -7,7 +7,7 @@ const userValidate = require('../middlewares/user-validator');
 const {
   loginMiddleware,
   notLoggedIn,
-  jwtMiddleware,
+  verifyJWT,
 } = require('../middlewares/auth-middlewares');
 
 router.post('/create',
@@ -33,7 +33,7 @@ router.post('/create',
 });
 
 router.post('/createUser',
-  jwtMiddleware,
+  verifyJWT,
   objectFilter('body', ['name', 'email', 'password', 'interesses', 'periodo', 'materias']),
   userValidate('createUser'),
   async (req, res, next) => {
@@ -56,7 +56,7 @@ router.post('/createUser',
 });
 
 router.get('/getUsers',
-  jwtMiddleware,
+  verifyJWT,
   async (req, res, next) => {
     try {
       const users = await UserService.getAllUsers();
@@ -68,7 +68,7 @@ router.get('/getUsers',
 });
 
 router.get('/getUser/:id',
-  jwtMiddleware,
+  verifyJWT,
   async (req, res, next) => {
     try {
       const userId = req.params.id;
@@ -80,7 +80,7 @@ router.get('/getUser/:id',
 });
 
 router.get('/myAccount',
-  jwtMiddleware,
+  verifyJWT,
   async (req, res, next) => {
     try {
       const currentUserId = req.user.id;
@@ -92,7 +92,7 @@ router.get('/myAccount',
 });
 
 router.get('/getTarefaInfo/:tarefaId',
-  jwtMiddleware,
+  verifyJWT,
   async (req, res, next) => {
     try {
       const tarefa = await TarefaService.getTarefaById(req.params.tarefaId); // object
@@ -105,7 +105,7 @@ router.get('/getTarefaInfo/:tarefaId',
 });
 
 router.put('/updateUser/:id',
-  jwtMiddleware,
+  verifyJWT,
   userValidate('updateUser'),
   async (req, res, next) => {
     try {
@@ -121,7 +121,7 @@ router.post(
   '/login', notLoggedIn, userValidate('login'), loginMiddleware,
 );
 
-router.get('/logout', jwtMiddleware, (req, res, next) => {
+router.get('/logout', verifyJWT, (req, res, next) => {
   try {
     res.clearCookie('jwt');
     res.status(200).end();
@@ -131,7 +131,7 @@ router.get('/logout', jwtMiddleware, (req, res, next) => {
 });
 
 router.delete('/delete/:id',
-  jwtMiddleware, 
+  verifyJWT, 
   async (req, res, next) => {
     try {
       await UserService.deleteUser(req.params.id, req.user.id);
