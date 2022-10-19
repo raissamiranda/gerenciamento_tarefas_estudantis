@@ -28,7 +28,7 @@ export const DataContainer = styled('div')(({ theme }) => ({
   height: '100%',
   justifyContent: "center",
   alignItems: "flex-start",
-  gap: 15
+  gap: 15,
 
 }));
 
