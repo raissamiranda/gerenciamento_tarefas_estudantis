@@ -33,7 +33,6 @@ router.post('/create',
 });
 
 router.post('/createUser',
-  verifyJWT,
   objectFilter('body', ['name', 'email', 'password', 'interesses', 'periodo', 'materias']),
   userValidate('createUser'),
   async (req, res, next) => {

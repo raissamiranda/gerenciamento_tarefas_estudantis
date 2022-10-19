@@ -1,44 +1,49 @@
-const Sequelize = require('sequelize');
+const { DataTypes } = require('sequelize');
 const database = require('../database/index');
  
 const User = database.define('usuario', {
     id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
     },
     
     name: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     
     email: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
     },
     
     password: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     
     interesses: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: true,
     },
 
     periodo: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: true,
     },
 
     materias: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: true,
     },
 })
- 
+User.sync({alter: true, force: false})
+  .then(() => {
+    console.log('User table was (re)created');
+  })
+  .catch((err) => console.log(err));
+
 module.exports = User;

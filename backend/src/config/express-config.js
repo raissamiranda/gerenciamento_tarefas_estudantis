@@ -35,6 +35,15 @@ const express = require('express'); //chama a biblioteca instalada
 const app = express(); //faz uso da biblioteca instalada em uma constante pra ficar mais facil de chamar o express
 app.use(cors(corsOptions));
 
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+app.use(express.urlencoded({
+    extended: true,
+}));
+
+app.use(express.json());
+
 const usersRouter = require('../controller/user-controller');
 app.use('/users', usersRouter); // Definição de Router de usuários
 
