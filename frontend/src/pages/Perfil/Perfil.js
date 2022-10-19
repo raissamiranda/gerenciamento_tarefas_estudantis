@@ -11,13 +11,16 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MailIcon from '@mui/icons-material/Mail';
 import CallIcon from '@mui/icons-material/Call'
 import DateRangeIcon from '@mui/icons-material/DateRange';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import {
     DataContainer,
     DataAlign,
     Value,
     Label,
-    Divider
+    Divider,
+    PictureNameContainer,
+    UserNameText,
   } from "./Styles"
 
 const theme = createTheme();
@@ -50,7 +53,7 @@ export default function Perfil() {
             </Button>
       </Grid>
       </Grid>
-      <Container maxWidth="lg" color="app-cinza-claro">
+      <Container maxWidth="lg">
         <CssBaseline />
         <Box
           sx={{
@@ -66,10 +69,20 @@ export default function Perfil() {
         <Paper>
             <Divider style={{
               paddingLeft: 10,
-              paddingRight: 10
+              paddingRight: 10,
+              backgroundColor: '#e0c4df',
             }}
             >
-        <DataContainer>
+              <PictureNameContainer>
+                  <AccountCircleIcon style={{
+                    fontSize: 100,
+                  }}>
+                  </AccountCircleIcon>
+                  <UserNameText>
+                  Isabella
+                </UserNameText>
+              </PictureNameContainer>
+              <DataContainer>
                 <DataAlign>
                   <MailIcon />
                   <Label> Email: </Label>
